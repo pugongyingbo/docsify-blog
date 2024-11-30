@@ -32,7 +32,7 @@ Spring AI Alibaba 开源项目基于 Spring AI 构建，是阿里云通义系列
 3. 配置yaml文件api-key(阿里百炼平台开通获取)
 4. 注入ChatClient即可对话
 
-```
+```yaml
 spring:
   application:
     name: ai-test
@@ -45,7 +45,7 @@ spring:
 
 > 可以看到代码很简洁
 
-```
+```java
 
 private ChatClient chatClient;
 
@@ -86,7 +86,7 @@ private ChatClient chatClient;
 > FunctionCallback.java 接口和配套的 FunctionCallbackWrapper.java 工具类包含了底层实现代码，它们是简化Java 回调函数的实现和注册的关键。
 
 
-```
+```java
 protected ToolResponseMessage executeFunctions(AssistantMessage assistantMessage) {
 
     List<ToolResponseMessage.ToolResponse> toolResponses = new ArrayList<>();
@@ -120,7 +120,7 @@ protected ToolResponseMessage executeFunctions(AssistantMessage assistantMessage
 1. 声明
 
 
-```
+```java
 public class MockWeatherService implements Function<MockWeatherService.Request, Response> {
 
     @Override
@@ -151,7 +151,7 @@ public class MockWeatherService implements Function<MockWeatherService.Request, 
 
 2. 调用
 
-```
+```java
 
  @GetMapping("/function/chat")
     public String functionChat(String subject) {
@@ -167,7 +167,7 @@ public class MockWeatherService implements Function<MockWeatherService.Request, 
 
 1. 声明
 
-```
+```java
 @Service
 public class MockOrderService {
     public Response getOrder(Request request) {
@@ -188,7 +188,7 @@ public class MockOrderService {
 
 2. 注入
 
-```
+```java
 @Configuration
 public class AiConfig {
     @Bean
@@ -203,7 +203,7 @@ public class AiConfig {
 
 3. 调用
 
-```
+```java
 
    @GetMapping("/v2/function/chat")
     public String functionChat2(String input) {
